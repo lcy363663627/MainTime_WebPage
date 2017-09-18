@@ -29,7 +29,7 @@
 .selling {
     width: 1200px;
     height: 400px;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 
 .li-img {
@@ -60,7 +60,7 @@
 
 .li-img-name {
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 15px;
 }
 
