@@ -67,11 +67,12 @@
 .li-img-btn {
     display: block;
     text-align: center;
-    width: 80%;
+    width: 70%;
     height: 37px;
     line-height: 37px;
     font-size: 18px;
     margin: 0 auto;
     background-color: #3498db;
     border-radius: 50px;
+    cursor: pointer;
 }
