@@ -28,8 +28,9 @@
 
 .selling {
     width: 1200px;
-    height: 400px;
+    height: 450px;
     /* background-color: yellow; */
+    position: relative;
 }
 
 .li-img {
@@ -60,19 +61,54 @@
 
 .li-img-name {
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.li-img-btn {
+.btnn {
     display: block;
     text-align: center;
+    margin: 0 auto;
     width: 70%;
     height: 37px;
     line-height: 37px;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0 auto;
     background-color: #3498db;
     border-radius: 50px;
     cursor: pointer;
+}
+.btnn:hover{
+    color: white;
+    border: 1px solid #ecf0f1;
+}
+.bottom-btn-div{
+    /* background-color: red; */
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+    text-align: center;;
+}
+
+.bottom-btn{
+    width:130px;
+    height: 30px;
+    
+    border: none;
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    outline: none;
+    background-color: #ecf0f1;
+    border-radius: 6px;
+}
+
+.bottom-btn:hover {
+    border: 1px solid #3498db;
 }
