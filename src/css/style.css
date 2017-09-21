@@ -73,6 +73,7 @@
     width: 6000px;
     height: 360px;
     display: inline-block;
+    font-size: 0;
     transform: translateX(-1200px);
 }
 
