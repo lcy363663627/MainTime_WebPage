@@ -72,11 +72,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 6000px;
+    width: 8400px;
     height: 360px;
     display: inline-block;
     font-size: 0;
-    /* transform: translateX(-2400px); */
+    transform: translateX(-1200px);
 }
 
 .swiper-img {
