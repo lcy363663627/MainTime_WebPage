@@ -43,8 +43,7 @@ var swiper_btn_right = Util.getElements('.swiper-btn-right')[0];
 
 Util.addEvent(swiper_btn_left, 'click', function(e) {
     my_Animate(swiper_li, 'right', 1200);
-    // var parent = swiper_img[swiper_li.length-1].parentNode;
-    console.log(swiper_img[swiper_img.length - 1]);
+    
 });
 Util.addEvent(swiper_btn_right, 'click', function(e) {
     my_Animate(swiper_li, 'left', 1200);
