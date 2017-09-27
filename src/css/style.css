@@ -205,3 +205,49 @@
 .bottom-btn:hover {
     border: 1px solid #3498db;
 }
+
+.div-hover {
+    position: relative;
+}
+
+.div-hover:hover .a-item {
+    display: block;
+}
+
+.a-item {
+    padding: 15px;
+    width: 170px;
+    height: 256px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.85;
+    display: none;
+}
+
+.a-item-div {
+    height: 160px;
+}
+
+.a-item-div>p {
+    font-family: '微软雅黑';
+    font-size: 14px;
+    color: #95a5a6;
+}
+
+.a-item>p {
+    margin-left: 15px;
+    font-size: 16px;
+    color: white;
+    position: relative;
+}
+
+.a-item>p i {
+    width: 16px;
+    height: 16px;
+    background-image: url('../../static/yinhao.png');
+    position: absolute;
+    top: -5px;
+    left: -20px;
+}

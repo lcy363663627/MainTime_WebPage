@@ -1,25 +1,38 @@
 var that = this;
 var ele1 = {
+    type: 'selling',
     ele: Util.getElements('.div-img1'),
     img: Util.getElements('.img1'),
     p: Util.getElements('.name1'),
     button: Util.getElements('.li-img-btn'),
-    title: 'titleCn'
-}
+    title: 'titleCn',
+    el_text1: Util.getElements('.a-item-div-text1'),
+    el_text2: Util.getElements('.a-item-div-text2'),
+    el_text3: Util.getElements('.a-item-div-text3'),
+    el_text4: Util.getElements('.a-item-text1'),
+    text1: ['rMonth', 'rDay'],
+    text2: 'type',
+    text3: 'length',
+    text4: 'commonSpecial'
+};
 var ele2 = {
+    type: 'Hot',
     ele: Util.getElements('.div-img2'),
     img: Util.getElements('.img2'),
     p: Util.getElements('.name2'),
     button: Util.getElements('.li-img-btn2'),
     title: 'tCn'
-}
+
+};
 var ele3 = {
+    type: 'JJSY',
     ele: Util.getElements('.div-img3'),
     img: Util.getElements('.img3'),
     p: Util.getElements('.name3'),
     button: Util.getElements('.li-img-btn3'),
     title: 'title'
-}
+};
+console.log(ele1);
 http.getrequest('get', 'http://localhost:3000/PageSubArea/HotPlayMovies.api?locationId=290')
     .then(function(res) {
         Util.setElements(res.movies, that.ele1);
@@ -68,9 +81,14 @@ timer1 = setInterval(function() {
     }
     pointMove(swiper_point_span, index);
 }, 4000);
+
+
+
 /**
  * 向右滚动  事件触发的方法
  */
+
+
 function move_right() {
     my_Animate(swiper_li, 'right', 1200);
     clearInterval(timer1);
@@ -81,9 +99,13 @@ function move_right() {
     }
     pointMove(swiper_point_span, index);
 }
+
+
 /**
  * 向左滚动  事件触发的方法
  */
+
+
 function move_left() {
     my_Animate(swiper_li, 'left', 1200);
     clearInterval(timer1);
@@ -100,6 +122,9 @@ function move_left() {
  * @param {*圆点元素[数组]} el 
  * @param {*当前图片滚动的索引} index 
  */
+
+
+
 function pointMove(el, index) {
     for (var i = 0; i < el.length; i++) {
         if (el[i].className.split(' ').length > 1) {
@@ -114,6 +139,9 @@ function pointMove(el, index) {
  * @param {*滚动的方向} direction 
  * @param {*一次滚动的距离} transitionX 
  */
+
+
+
 function my_Animate(ele, direction, transitionX) {
 
     var liftX = 0;
