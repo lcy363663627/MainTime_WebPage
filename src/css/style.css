@@ -38,7 +38,7 @@
 
 .swiper-btn-left {
     position: relative;
-    left: 0;
+    left: 3px;
     width: 50px;
     height: 100px;
     top: 130px;
@@ -50,7 +50,7 @@
 
 .swiper-btn-right {
     position: absolute;
-    right: 0;
+    right: 3px;
     width: 50px;
     height: 100px;
     top: 130px;
@@ -87,14 +87,14 @@
     border: none;
 }
 
-.swiper-point{
+.swiper-point {
     width: 1200px;
     height: 15px;
     /* background-color: red; */
     text-align: center;
 }
 
-.swiper-point-span{
+.swiper-point-span {
     height: 0px;
     width: 0px;
     display: inline-block;
