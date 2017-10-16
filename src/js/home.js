@@ -62,6 +62,16 @@ var swiper_btn_right = Util.getElements('.swiper-btn-right')[0];
 var swiper_point_span = Util.getElements('.swiper-point-span');
 var timer1;
 var index = 1;
+var shangying_left = Util.getElements('.shangying-left')[0];
+var shangying_right = Util.getElements('.shangying-right')[0];
+var shangying_div = Util.getElements('.shangying_div')[0];
+Util.addEvent(shangying_left, 'click', function() {
+    shangying_div.style.webkitTransform = 'translateX(0)';
+});
+Util.addEvent(shangying_right, 'click', function() {
+    shangying_div.style.webkitTransform = 'translateX(-1200px)';
+});
+
 Util.addEvent(swiper_btn_left, 'click', move_right);
 Util.addEvent(swiper_btn_right, 'click', move_left);
 Util.addEvent(swiper_li, 'mouseenter', function(e) {
@@ -179,51 +189,6 @@ function my_Animate(ele, direction, transitionX) {
             if (leftX >= 1200) {
                 ele.style.left = -4800 + "px";
             }
-        }
-    }
-    move();
-}
-
-var shangying_left = Util.getElements('.shangying-left')[0];
-var shangying_right = Util.getElements('.shangying-right')[0];
-var shangying_div = Util.getElements('.shangying_div')[0];
-Util.addEvent(shangying_left, 'click', function() {
-
-    shangying_div.style.webkitTransform = 'translateX(0)';
-
-
-});
-Util.addEvent(shangying_right, 'click', function() {
-
-    console.log(shangying_div.offsetLeft);
-    shangying_div.style.webkitTransform = 'translateX(-1200px)';
-
-
-});
-
-function my_swiper(ele, direction, transitionX) {
-    var liftX = 0;
-    if (direction == 'left') {
-        leftX = ele.offsetLeft - 10;
-    } else {
-        leftX = ele.offsetLeft + 10;
-    }
-
-    function move() {
-        var timer = setTimeout(function() {
-            move();
-        }, 1);
-        if (Math.abs(leftX) % transitionX == 0) {
-            clearTimeout(timer);
-        }
-        if (direction == 'left') {
-            ele.style.left = leftX + "px";
-            leftX = leftX - 10;
-
-        } else if (direction == 'right') {
-            ele.style.left = leftX + "px";
-            leftX = leftX + 10;
-
         }
     }
     move();
