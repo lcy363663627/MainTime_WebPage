@@ -1,6 +1,7 @@
 var that = this;
 var ele1 = {
     type: 'selling',
+    title_count: Util.getElements('.title-count')[0],
     ele: Util.getElements('.div-img1'),
     img: Util.getElements('.img1'),
     p: Util.getElements('.name1'),
@@ -17,6 +18,7 @@ var ele1 = {
 };
 var ele2 = {
     type: 'Hot',
+    title_count: Util.getElements('.title-count1')[0],
     ele: Util.getElements('.div-img2'),
     img: Util.getElements('.img2'),
     p: Util.getElements('.name2'),
@@ -26,20 +28,25 @@ var ele2 = {
 };
 var ele3 = {
     type: 'JJSY',
+    title_count: Util.getElements('.title-count2')[0],
     ele: Util.getElements('.div-img3'),
     img: Util.getElements('.img3'),
     p: Util.getElements('.name3'),
     button: Util.getElements('.li-img-btn3'),
     title: 'title'
 };
-console.log(ele1);
+
 http.getrequest('get', 'http://localhost:3000/PageSubArea/HotPlayMovies.api?locationId=290')
     .then(function(res) {
         Util.setElements(res.movies, that.ele1);
+        ele1.title_count.innerHTML = res.totalHotMovie - 1;
+
     });
 http.getrequest('get', 'http://localhost:3000/Showtime/LocationMovies.api?locationId=290')
     .then(function(res) {
         Util.setElements(res.ms, that.ele2);
+        ele2.title_count.innerHTML = res.ms.length;
+        ele3.title_count.innerHTML = res.totalComingMovie;
     });
 http.getrequest('get', 'http://localhost:3000/Movie/MovieComingNew.api?locationId=290')
     .then(function(res) {
@@ -172,6 +179,51 @@ function my_Animate(ele, direction, transitionX) {
             if (leftX >= 1200) {
                 ele.style.left = -4800 + "px";
             }
+        }
+    }
+    move();
+}
+
+var shangying_left = Util.getElements('.shangying-left')[0];
+var shangying_right = Util.getElements('.shangying-right')[0];
+var shangying_div = Util.getElements('.shangying_div')[0];
+Util.addEvent(shangying_left, 'click', function() {
+
+    shangying_div.style.webkitTransform = 'translateX(0)';
+
+
+});
+Util.addEvent(shangying_right, 'click', function() {
+
+    console.log(shangying_div.offsetLeft);
+    shangying_div.style.webkitTransform = 'translateX(-1200px)';
+
+
+});
+
+function my_swiper(ele, direction, transitionX) {
+    var liftX = 0;
+    if (direction == 'left') {
+        leftX = ele.offsetLeft - 10;
+    } else {
+        leftX = ele.offsetLeft + 10;
+    }
+
+    function move() {
+        var timer = setTimeout(function() {
+            move();
+        }, 1);
+        if (Math.abs(leftX) % transitionX == 0) {
+            clearTimeout(timer);
+        }
+        if (direction == 'left') {
+            ele.style.left = leftX + "px";
+            leftX = leftX - 10;
+
+        } else if (direction == 'right') {
+            ele.style.left = leftX + "px";
+            leftX = leftX + 10;
+
         }
     }
     move();
