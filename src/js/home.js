@@ -3,6 +3,7 @@ var ele1 = {
     type: 'selling',
     title_count: Util.getElements('.title-count')[0],
     ele: Util.getElements('.div-img1'),
+    a_link: Util.getElements('.a-link1'),
     img: Util.getElements('.img1'),
     p: Util.getElements('.name1'),
     button: Util.getElements('.li-img-btn'),
@@ -37,20 +38,26 @@ var ele3 = {
 };
 
 http.getrequest('get', 'http://localhost:3000/PageSubArea/HotPlayMovies.api?locationId=290')
-    .then(function(res) {
+    .then(function (res) {
         Util.setElements(res.movies, that.ele1);
         ele1.title_count.innerHTML = res.totalHotMovie - 1;
         Util.img_load(img);
-
+        for (var i = 0; i < ele1.a_link.length; i++) {
+            ele1.a_link[i].onclick = (function (a) {
+                return function () {
+                    this.href = './src/page/hotmovie.html?id=' + res.movies[a].movieId;
+                }
+            })(i);
+        }
     });
 http.getrequest('get', 'http://localhost:3000/Showtime/LocationMovies.api?locationId=290')
-    .then(function(res) {
+    .then(function (res) {
         Util.setElements(res.ms, that.ele2);
         ele2.title_count.innerHTML = res.ms.length;
         ele3.title_count.innerHTML = res.totalComingMovie;
     });
 http.getrequest('get', 'http://localhost:3000/Movie/MovieComingNew.api?locationId=290')
-    .then(function(res) {
+    .then(function (res) {
         Util.setElements(res.moviecomings, that.ele3);
     });
 
@@ -66,20 +73,20 @@ var index = 1;
 var shangying_left = Util.getElements('.shangying-left')[0];
 var shangying_right = Util.getElements('.shangying-right')[0];
 var shangying_div = Util.getElements('.shangying_div')[0];
-Util.addEvent(shangying_left, 'click', function() {
+Util.addEvent(shangying_left, 'click', function () {
     shangying_div.style.webkitTransform = 'translateX(0)';
 });
-Util.addEvent(shangying_right, 'click', function() {
+Util.addEvent(shangying_right, 'click', function () {
     shangying_div.style.webkitTransform = 'translateX(-1200px)';
 });
 
 Util.addEvent(swiper_btn_left, 'click', move_right);
 Util.addEvent(swiper_btn_right, 'click', move_left);
-Util.addEvent(swiper_li, 'mouseenter', function(e) {
+Util.addEvent(swiper_li, 'mouseenter', function (e) {
     clearInterval(timer1);
 });
-Util.addEvent(swiper_li, 'mouseleave', function(e) {
-    timer1 = setInterval(function() {
+Util.addEvent(swiper_li, 'mouseleave', function (e) {
+    timer1 = setInterval(function () {
         my_Animate(swiper_li, 'left', 1200);
         if (index > 4) {
             index = 1;
@@ -90,7 +97,7 @@ Util.addEvent(swiper_li, 'mouseleave', function(e) {
     }, 4000);
 });
 
-timer1 = setInterval(function() {
+timer1 = setInterval(function () {
     my_Animate(swiper_li, 'left', 1200);
     if (index > 4) {
         index = 1;
@@ -171,7 +178,7 @@ function my_Animate(ele, direction, transitionX) {
     }
 
     function move() {
-        var timer = setTimeout(function() {
+        var timer = setTimeout(function () {
             move();
         }, 1);
 
