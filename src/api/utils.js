@@ -94,16 +94,19 @@ var Util = {
         var n = 0;
         var seeHeight = document.documentElement.clientHeight;
         var scrolltop = document.body.scrollTop || document.documentElement.scrollTop;
-        // console.log(seeHeight + ',' + scrolltop + ',' + getTop(ele_Arr[1]));
         for (var i = n; i < aImg_len; i++) {
             if (getTop(ele_Arr[i]) < seeHeight + scrolltop) {
-                // console.log(seeHeight + ',' + scrolltop + ',' + getTop(ele_Arr[i]));
-                if (!ele_Arr[i].getAttribute('swiper')) {
-                    ele_Arr[i].src = ele_Arr[i].getAttribute('datasrc');
+                if (ele_Arr[i].getAttribute('datasrc')) {
+                    var attr = ele_Arr[i].getAttribute('datasrc');
+                    ele_Arr[i].src = attr;
+                    ele_Arr[i].removeAttribute('datasrc');
+                    if (n == aImg_len - 1) {
+                        window.onscroll = null;
+                    }
                 }
-
             }
             n = i + 1;
+
         }
 
         function getTop(e) {
