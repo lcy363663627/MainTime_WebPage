@@ -98,6 +98,7 @@ var Util = {
         for (var i = n; i < aImg_len; i++) {
             if (getTop(ele_Arr[i]) < seeHeight + scrolltop) {
                 // console.log(seeHeight + ',' + scrolltop + ',' + getTop(ele_Arr[i]));
+<<<<<<< HEAD
                 if (ele_Arr[i].getAttribute('datasrc')) {
                     var attr = ele_Arr[i].getAttribute('datasrc');
                     ele_Arr[i].src = attr;
@@ -109,6 +110,15 @@ var Util = {
                 }
                 n = i + 1;
             }
+=======
+                if (!ele_Arr[i].getAttribute('swiper')) {
+                    ele_Arr[i].src = ele_Arr[i].getAttribute('datasrc');
+                }
+
+            }
+            n = i + 1;
+        }
+>>>>>>> parent of 115ad67... 完善 图片懒加载
 
             function getTop(e) {
                 var t = e.offsetTop;
