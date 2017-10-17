@@ -41,9 +41,13 @@ var Util = {
         }
 
         for (var i = 0; i < obj.ele.length; i++) {
-            obj.img[i].src = (function(a) {
+            obj.img[i].setAttribute('datasrc', (function(a) {
                 return data[a].img ? data[a].img : data[a].image;
-            })(i);
+            })(i));
+            // 图片懒加载。。。
+            // obj.img[i].src = (function(a) {
+            //     return data[a].img ? data[a].img : data[a].image;
+            // })(i);
             obj.p[i].innerHTML = (function(a) {
                 return data[a][title];
             })(i);
@@ -81,7 +85,35 @@ var Util = {
         } else {
             ele["on" + type] = null;
         }
-    }
+    },
+    /**
+     * 图片懒加载方法
+     */
+    img_load: function(ele_Arr) {
+        var aImg_len = ele_Arr.length;
+        var n = 0;
+        var seeHeight = document.documentElement.clientHeight;
+        var scrolltop = document.body.scrollTop || document.documentElement.scrollTop;
+        // console.log(seeHeight + ',' + scrolltop + ',' + getTop(ele_Arr[1]));
+        for (var i = n; i < aImg_len; i++) {
+            if (getTop(ele_Arr[i]) < seeHeight + scrolltop) {
+                // console.log(seeHeight + ',' + scrolltop + ',' + getTop(ele_Arr[i]));
+                if (!ele_Arr[i].getAttribute('swiper')) {
+                    ele_Arr[i].src = ele_Arr[i].getAttribute('datasrc');
+                }
 
+            }
+            n = i + 1;
+        }
+
+        function getTop(e) {
+            var t = e.offsetTop;
+            while (e = e.offsetParent) {
+                t += e.offsetTop;
+            }
+            return t;
+        }
+
+    }
 
 }

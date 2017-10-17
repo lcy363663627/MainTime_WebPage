@@ -40,6 +40,7 @@ http.getrequest('get', 'http://localhost:3000/PageSubArea/HotPlayMovies.api?loca
     .then(function(res) {
         Util.setElements(res.movies, that.ele1);
         ele1.title_count.innerHTML = res.totalHotMovie - 1;
+        Util.img_load(img);
 
     });
 http.getrequest('get', 'http://localhost:3000/Showtime/LocationMovies.api?locationId=290')
